@@ -74,4 +74,8 @@
         height: 80%;
         border-radius: 1rem;
     }
+
+    .label-input{
+        margin-left: 1rem;
+    }
   }

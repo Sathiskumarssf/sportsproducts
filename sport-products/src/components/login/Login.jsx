@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './login.css';
-import coverimage from '../../assets/sports-tools_53876-138077.avif'
+import coverimage from '../../assets/sports-tools_53876-138077.avif';
+import Navbar from '../../parts/navbar/Nabbar'
 
 
 import { Link,useNavigate } from 'react-router-dom';
@@ -27,7 +28,10 @@ const Login = () => {
      
   }
 
-  return (
+  return ( 
+    <div>
+      <Navbar />
+      
     <div className='login-constainer bg-light'>
         <div className='main-container d-flex '>
          <div className='box'>
@@ -35,7 +39,7 @@ const Login = () => {
          </div>
           
          <div className='box'>
-          
+
          <div className='login-container-component bg-info p-5 m-5'>
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>
@@ -57,6 +61,7 @@ const Login = () => {
        </div>
          </div>
         </div>
+    </div>
     </div>
   );
 };

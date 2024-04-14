@@ -20,7 +20,7 @@
 }
 
 .main-container{
-    width: 100vw;
+    width: 90vw;
     height: 100vh;
     flex-direction: row;
 }
@@ -54,7 +54,9 @@
 
 @media only screen and (max-width: 767px) {
     /* CSS styles for phones */
+ 
     .main-container{
+        width: 100%;
         flex-direction: column;
     }
 
@@ -68,6 +70,10 @@
         margin-left: 5%;
         height: 80%;
         border-radius: 1rem;
+    }
+
+    .input-label{
+        margin-left: 1rem;
     }
   }
   
