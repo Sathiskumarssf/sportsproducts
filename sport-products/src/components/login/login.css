@@ -1,0 +1,73 @@
+.login-constainer{
+    width: 100vw;
+    height: 100vh;
+    background: -moz-linear-gradient(90deg, rgba(92, 126, 129, 1) 0%, rgba(164, 38, 130, 1) 100%); 
+
+    /* safari 5.1+,chrome 10+ */
+    background: -webkit-linear-gradient(90deg, rgba(92, 126, 129, 1) 0%, rgba(164, 38, 130, 1) 100%);
+
+    /* opera 11.10+ */
+    background: -o-linear-gradient(90deg, rgba(92, 126, 129, 1) 0%, rgba(164, 38, 130, 1) 100%);
+
+    /* ie 6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#A42682', endColorstr='#5C7E81', GradientType=0 );
+
+    /* ie 10+ */
+    background: -ms-linear-gradient(90deg, rgba(92, 126, 129, 1) 0%, rgba(164, 38, 130, 1) 100%);
+
+    /* global 94%+ browsers support */
+    background: linear-gradient(90deg, rgba(92, 126, 129, 1) 0%, rgba(164, 38, 130, 1) 100%);
+}
+
+.main-container{
+    width: 100vw;
+    height: 100vh;
+    flex-direction: row;
+}
+
+.login-container-component{
+    position: absolute;
+    top: 20%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 50%;
+    border-top-left-radius: 10rem;
+    border-bottom-right-radius: 10rem;
+   
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.box {
+    width: 50%;
+}
+
+.coverimage{
+    height: 100%;
+    width: 100%;
+}
+
+.input-label{
+    margin-left: 5rem;
+}
+
+@media only screen and (max-width: 767px) {
+    /* CSS styles for phones */
+    .main-container{
+        flex-direction: column;
+    }
+
+    .box {
+        width: 100%;
+    }
+
+    .login-container-component{
+        position: relative;
+        width: 80%;
+        margin-left: 5%;
+        height: 80%;
+        border-radius: 1rem;
+    }
+  }
+  
