@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const cors  = require('cors')
 const bodyParser = require('body-parser');
 const usermodel =require('./models/user')
+const bcrypt = require('bcrypt');
+
  
 const app = express();
 app.use(cors())
@@ -18,21 +20,43 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => console.log('Connected to MongoDB'));
 
- 
- 
- 
-
 // Register endpoint
- 
- 
+app.post('/register', async (req, res) => {
 
-app.post('/register', (req, res) => {
+  const { username, useremail,password } = req.body;
+  console.log(`${username} ${password} ${useremail}`);
+  // Validate user input (e.g., check if email is valid, name is provided, etc.)
+  if (!useremail || !username || !password || useremail.trim() === '' || username.trim() === '' || password.trim() === '') {
+    return res.status(400).json({ message: "Please provide all required fields" });
+  }else{
 
-   usermodel.create(req.body)
-   .then(user1 => res.json(user1))
-   .catch(err => res.json(err))
-  // Your login logic goes here
+    const hashedPassword = await bcrypt.hash(password, 10);
+  // Create user object with hashed password
+    const newUser = {
+      username: username,
+      password: hashedPassword,
+      email: useremail// Store the hashed password in the database
+    };
+
+  // Save user data to the database
+  const user = await usermodel.create(newUser);
+
+  res.status(201).json(user);
+  // Respond with the newly created user
+  }  
 });
+
+app.post('/fetchdata', async (req, res) => {
+  try {
+    const users = await usermodel.find(); // Assuming usermodel represents your Mongoose model
+    console.log(users); // Log the fetched user data
+    res.json(users); // Send user data as JSON response
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 
 app.post ('/login',(req,res) =>{
   const {username,password} =req.body;

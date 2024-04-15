@@ -4,6 +4,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { Link } from 'react-router-dom';
 import { MdLocationOn } from '../../../node_modules/react-icons/md';
 import { MdContacts  } from '../../../node_modules/react-icons/md';
+import { MdHome } from 'react-icons/md';
+
 import './navbar.css'
 
 
@@ -19,7 +21,7 @@ const Nabbar = () => {
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="#"><MdHome/>Home</a>
               </li>
               <li className="nav-item">
                 <Link to="/aboutus" className="nav-link">
