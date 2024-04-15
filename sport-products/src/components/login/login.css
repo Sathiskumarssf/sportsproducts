@@ -26,6 +26,7 @@
 }
 
 .login-container-component{
+    background-color: azure ;
     position: absolute;
     top: 20%;
     text-align: center;
@@ -35,7 +36,7 @@
     height: 50%;
     border-top-left-radius: 10rem;
     border-bottom-right-radius: 10rem;
-   
+    filter: brightness(90%);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -50,6 +51,7 @@
 
 .input-label{
     margin-left: 5rem;
+      font-size: 25px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -74,6 +76,10 @@
 
     .input-label{
         margin-left: 1rem;
+    }
+
+    .coverimage{
+        height: 120%;
     }
   }
   

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './login.css';
-import coverimage from '../../assets/sports-tools_53876-138077.avif';
+import coverimage from '../../assets/240_F_89241093_oS2Ch4fx3UxukMosnsbfTGdx4ADYV8WA.jpg';
 import Navbar from '../../parts/navbar/Nabbar'
 
 
@@ -40,12 +40,12 @@ const Login = () => {
           
          <div className='box'>
 
-         <div className='login-container-component bg-info p-5 m-5'>
+         <div className='login-container-component   p-5 m-5'>
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>
             <div className='d-flex'>
               <label className='input-label'>Username:</label>
-              <input className="form-control" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+              <input className="form-control" type="text" value={username}  onChange={(e) => setUsername(e.target.value)} />
             </div>
             <div className='d-flex mt-2'>
               <label className='input-label'>Password:</label>

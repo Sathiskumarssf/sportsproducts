@@ -4,12 +4,13 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { Link } from 'react-router-dom';
 import { MdLocationOn } from '../../../node_modules/react-icons/md';
 import { MdContacts  } from '../../../node_modules/react-icons/md';
+import './navbar.css'
 
 
 const Nabbar = () => {
   return (
-    <div  >
-      <nav class="navbar  navbar-expand-lg bg-light">
+    <div  className='main-navbar'>
+      <nav class="navbar  navbar-expand-lg bg-secondary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Menu </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">

@@ -17,6 +17,7 @@
 
     /* global 94%+ browsers support */
     background: linear-gradient(90deg, rgba(92, 126, 129, 1) 0%, rgba(164, 38, 130, 1) 100%);
+    
 }
 
 .main-container{
@@ -25,6 +26,8 @@
     flex-direction: row;
 }
 .register-container-component{
+
+    background-color: azure ;
     position: absolute;
     top: 20%;
     text-align: center;
@@ -34,6 +37,7 @@
     height: 50%;
     border-top-left-radius: 10rem;
     border-bottom-right-radius: 10rem;
+    filter: brightness(90%);
    
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
@@ -51,10 +55,12 @@
 
 .label-input{
     margin-left: 5rem;
+    font-size: 25px;
 }
 
 .form-control{
     width: 40%;
+    
 }
 
 @media only screen and (max-width: 767px) {

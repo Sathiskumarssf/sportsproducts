@@ -3,7 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import './register.css'
-import coverimage from '../../assets/sports-tools_53876-138077.avif';
+import coverimage from '../../assets/240_F_89241093_oS2Ch4fx3UxukMosnsbfTGdx4ADYV8WA.jpg';
 import Navbar from '../../parts/navbar/Nabbar'
 
 const Register = () => {
@@ -34,7 +34,7 @@ const Register = () => {
 
               <div className='box'>
                     
-                    <div className='register-container-component bg-info p-5 m-5'>
+                    <div className='register-container-component   p-5 m-5'>
                     <h2>Rgister</h2>
                     <form onSubmit={handleSubmit}>
                       <div className='d-flex'>
