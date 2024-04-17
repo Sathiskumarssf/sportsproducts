@@ -3,7 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import './register.css'
-import coverimage from '../../assets/240_F_89241093_oS2Ch4fx3UxukMosnsbfTGdx4ADYV8WA.jpg';
+
 import Navbar from '../../parts/navbar/Nabbar'
 
 const Register = () => {
@@ -27,10 +27,12 @@ const Register = () => {
       <div>
         <Navbar/>
         <div className='register-container d-flex'>
-          <div className='main-container d-flex '>
+          <div className='main-container1 d-flex '>
 
           <div className='box'>
-            <img src= {coverimage} className='coverimage' alt="" srcset="" />
+           <div className='heading-containr1  '>
+               <h1 className='register-heading-text text-light '  >Gear Up for Adventure: Your Premier Destination for Sports Equipment and Accessories!</h1>
+           </div>
             </div>
 
               <div className='box'>

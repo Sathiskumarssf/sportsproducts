@@ -20,9 +20,19 @@
 }
 
 .main-container{
-    width: 90vw;
+    width: 100vw;
     height: 100vh;
     flex-direction: row;
+}
+.heading-containr{
+    background-image: url('../../assets/240_F_89241093_oS2Ch4fx3UxukMosnsbfTGdx4ADYV8WA.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height:100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-container-component{
@@ -32,8 +42,8 @@
     text-align: center;
     justify-content: center;
     align-items: center;
-    width: 40%;
-    height: 50%;
+    width: 30%;
+    height: 30%;
     border-top-left-radius: 10rem;
     border-bottom-right-radius: 10rem;
     filter: brightness(90%);
@@ -42,6 +52,11 @@
 
 .box {
     width: 50%;
+}
+
+.login-heading-text{
+    position: relative;
+    top: 30rem;
 }
 
 .coverimage{
@@ -58,7 +73,7 @@
     /* CSS styles for phones */
  
     .main-container{
-        width: 100%;
+        
         flex-direction: column;
     }
 
@@ -70,8 +85,12 @@
         position: relative;
         width: 80%;
         margin-left: 5%;
-        height: 80%;
+        height: 100%;
         border-radius: 1rem;
+    }
+    .heading-containr{
+        width: 100vw;
+        height: 40vh;
     }
 
     .input-label{
@@ -81,5 +100,9 @@
     .coverimage{
         height: 120%;
     }
+
+    .login-heading-text{
+        top: 10rem;
+   }
   }
   

@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors  = require('cors')
 const bodyParser = require('body-parser');
 const usermodel =require('./models/user')
+const productmodel =require('./models/products')
 const bcrypt = require('bcrypt');
 
  
@@ -10,12 +11,14 @@ const app = express();
 app.use(cors())
 const port = 5000;
 app.use(bodyParser.json());
-// Create connection to MySQL database
+ 
  
 mongoose.connect('mongodb://localhost:27017/sportsell', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => console.log('Connected to MongoDB'));
@@ -46,11 +49,42 @@ app.post('/register', async (req, res) => {
   }  
 });
 
+
+
 app.post('/fetchdata', async (req, res) => {
   try {
     const users = await usermodel.find(); // Assuming usermodel represents your Mongoose model
-    console.log(users); // Log the fetched user data
+     // Log the fetched user data
     res.json(users); // Send user data as JSON response
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+app.post('/fetchproduct', async (req, res) => {
+  try {
+    const { value, reqireiterm } = req.body;
+    console.log(reqireiterm, value);
+
+    if (typeof reqireiterm === 'undefined') {
+      if (value === "All products") {
+        const products = await productmodel.find();
+        return res.json(products);
+      } else {
+        const products = await productmodel.find({ category: value });
+        return res.json(products);
+      }
+    } else {
+      if (value === "All products") {
+        const products = await productmodel.find({ name: { $regex: reqireiterm, $options: 'i' } });
+        return res.json(products);
+      } else {
+        const products = await productmodel.find({ category: value, name: { $regex: reqireiterm, $options: 'i' } });
+        return res.json(products);
+      }
+    }
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ message: 'Internal server error' });

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './login.css';
-import coverimage from '../../assets/240_F_89241093_oS2Ch4fx3UxukMosnsbfTGdx4ADYV8WA.jpg';
+ 
 import Navbar from '../../parts/navbar/Nabbar'
 
 
@@ -34,8 +34,10 @@ const Login = () => {
       
     <div className='login-constainer bg-light'>
         <div className='main-container d-flex '>
-         <div className='box'>
-          <img src= {coverimage} alt="" srcset="" className='coverimage'/>
+         <div className='box '>
+             <div className='heading-containr'>
+             <h1 className='login-heading-text text-light   '  >Gear Up for Adventure: Your Premier Destination for Sports Equipment and Accessories!</h1>
+             </div>
          </div>
           
          <div className='box'>
