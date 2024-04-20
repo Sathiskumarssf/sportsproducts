@@ -49,7 +49,37 @@ app.post('/register', async (req, res) => {
   }  
 });
 
+app.post('/addproducts',async( req,res)=>{
+    const{ name,code,price,description,image,category} =req.body;
+    console.log(`${name} ${category} ${code}`)
 
+    if(name.trim() != '' && code.trim() != '' && price.trim() != '' &&  description.trim() != '' &&  image.trim() != ''){
+      const newproduct = {
+        category:category,
+        name: name,
+        code: code,
+        price: price,// Store the hashed password in the database,
+        imagePath:image,
+        description:description
+
+      };
+      const product = await productmodel.create(newproduct);
+      res.status(201).json(product);
+    }
+}
+);
+
+app.post('/removeproducts' ,async (req,res) =>{
+    const {code} =req.body;
+
+    const user = await productmodel.findOneAndDelete({ code: code });
+    if (user) {
+        console.log("User deleted:", user);
+    } else {
+        console.log("User not found.");
+    }
+    
+  })
 
 app.post('/fetchdata', async (req, res) => {
   try {
@@ -66,7 +96,7 @@ app.post('/fetchdata', async (req, res) => {
 app.post('/fetchproduct', async (req, res) => {
   try {
     const { value, reqireiterm } = req.body;
-    console.log(reqireiterm, value);
+     
 
     if (typeof reqireiterm === 'undefined') {
       if (value === "All products") {
@@ -92,21 +122,36 @@ app.post('/fetchproduct', async (req, res) => {
 });
 
 
-app.post ('/login',(req,res) =>{
-  const {username,password} =req.body;
-  usermodel.findOne({ username: username })
-  .then((user) => {
-    if (user) {
-      res.json("User already exists"); // Change this to an object or an appropriate response
-    } else {
-     res.json('user name ninvalid')
+app.post('/login', async (req, res) => {
+  const { useremail, password } = req.body;
+
+  try {
+    // Find the user by username
+    const user = await usermodel.findOne({ email: useremail });
+
+    if (!user) {
+      return res.status(400).json({ error: 'User not found' });
     }
-  })
-  .catch((err) => {
-    // Handle errors
-  });
-  
-})
+    // Compare the provided password with the hashed password stored in the database
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (passwordMatch) {
+     if(user.role=="admin"){
+      res.json( 'admin Login successful' );
+     }else{
+      res.json( 'user Login successful' );
+     }
+      
+    } else {
+      res.json( 'Incorrect password' );
+    }
+  } catch (error) {
+    console.error('Error during login:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+ 
  
 
 app.get('/', (req, res) => {

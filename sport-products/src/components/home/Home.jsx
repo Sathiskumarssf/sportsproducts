@@ -73,7 +73,7 @@ const Home = () => {
                 <div className='product-detalist'>
                 <img src={product.imagePath} alt={product.name} className='product-image' />
                 <h1>{product.name}</h1>
-                <div>{product.code}</div>
+                <div>{product.price}$</div>
                 <div>{product.discription}</div>
                 {/* <button className='btn btn-primary' onClick={() => storeToCheckout(product.img_path, product.name, product.prize, product.gender, product.itermscode, useremail)}>Add to checkout</button> */}
                 <button className='btn btn-primary' >Add to checkout</button>

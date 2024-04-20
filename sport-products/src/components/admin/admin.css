@@ -1,0 +1,167 @@
+/* Custom CSS */
+
+.admin-main{
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.form-container {
+    position: fixed;
+    width: 500px;
+    margin: auto;
+    margin-top: 10rem;
+    left: 30rem;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 2rem;
+    background-color: #fff;
+    z-index: 1000;
+  }
+  
+  .form-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form-container label {
+    margin-bottom: 5px;
+  }
+  
+  .form-container input,
+  .form-container textarea,
+  .form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .form-container button:hover {
+    background-color: #0056b3;
+  }
+
+  .product-admin-container{
+    position: relative;
+    margin-top: 40rem;
+    display: flex;
+    flex-direction: row ;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+
+.product-admin-container-items{
+    background-color:  #f0f0f0;
+    width: 30%;
+    height: 45rem;
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+.product-admin-container-items:hover{
+    transform: scale(1.1);
+}
+  
+
+  .main-buttons{
+    top: 50rem;
+    z-index: 1000; 
+    position: fixed;
+    font-size: 3rem;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    left: 0rem;
+}
+.main-remove-buttons{
+    top: 60rem;
+    position: absolute;
+    font-size: 3rem;
+   right: 10rem;
+  }
+  
+  .wawe-text {
+         position: absolute;
+        top: 20rem;
+        left: 20rem;
+        font-family: "Luckiest Guy", cursive;
+        text-align: center;
+        font-size: 5rem;
+        color: rgba(108, 94, 204, 0.75);
+        background-color: rgb(255, 255, 255);
+        text-shadow: rgb(0, 0, 0) 4px 3px 15px;
+  
+ 
+     
+      
+  }
+
+ 
+  
+
+  @media only screen and (max-width: 767px){
+    .main-buttons{
+        font-size: 1rem;
+        top: 40rem;
+     left: 0;
+    }
+    .main-remove-buttons{
+        font-size: 1rem;
+        top: 40rem;
+        right:  0;
+    }
+
+    .form-container{
+        position: relative;
+        left: 0rem;
+        max-width: 300px;
+        margin: auto;
+        margin-top: 10rem;
+
+         
+    }
+
+    .product-admin-container{
+        flex-direction: column;
+     /* / margin-top: 10rem; */
+    }
+
+    .product-admin-container-items{
+        width: 90%;
+
+    }
+    .wawe-text {
+        position: relative;
+        top: 10rem;
+        left: 0;
+        font-size: 2rem;
+    }
+
+    .form-container h2{
+        font-size: 15px;
+    }
+
+    .form-container input,
+    .form-container textarea,
+    .form-container select {
+        width: 90%;
+        padding: 0px;
+         
+    }
+
+    .selected-admin-iterm select option{
+     font-size: 15px;
+
+    }
+  }
