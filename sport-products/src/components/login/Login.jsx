@@ -20,9 +20,9 @@ const Login = () => {
      await axios.post('http://localhost:5000/login', { useremail, password })
      .then((result => {
         if(result.data ==="admin Login successful"){
-            navigate(`/admin`);
+            navigate(`/admin?email=${useremail}`);
         }else{
-          navigate(`/home`);
+          navigate(`/home?email=${useremail}`);
         }
      console.log(result.data)
      }))
@@ -37,14 +37,10 @@ const Login = () => {
       
     <div className='login-constainer bg-light'>
         <div className='main-container d-flex '>
-         <div className='box '>
+          
              <div className='heading-containr'>
              <h1 className='login-heading-text text-light   '  >Gear Up for Adventure: Your Premier Destination for Sports Equipment and Accessories!</h1>
              </div>
-         </div>
-          
-         <div className='box'>
-
          <div className='login-container-component   p-5 m-5'>
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>
@@ -56,17 +52,22 @@ const Login = () => {
               <label className='input-label'>Password:</label>
               <input className="form-control" type="password" value={password} placeholder='Enter your password' onChange={(e) => setPassword(e.target.value)} />
             </div>
+            <div className='d-flex'>
             <button type="submit" className='btn-primary btn '>Login</button>
+            <Link to='/'>
+              <button className='register-btn btn-primary btn mt-2'>Register</button>
+            </Link>
+            </div>
           </form>
         
         
-          <Link to='/'>
-              <button className='btn-primary btn mt-2'>Register</button>
-          </Link>
-       </div>
+          
+       
          </div>
         </div>
     </div>
+
+    
     </div>
   );
 };

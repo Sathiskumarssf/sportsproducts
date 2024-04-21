@@ -2,7 +2,8 @@ import React, { useState ,useEffect} from 'react';
 import axios from 'axios'; // Import axios for making HTTP requests
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './admin.css';
-import Navbar from '../../parts/navbar/Nabbar'
+import Navbar from '../../parts/navbar/Nabbar';
+import { BsSearch } from '../../../node_modules/react-icons/bs';
 
 const Admin = () => {
   const [name, setName] = useState('');
@@ -12,7 +13,7 @@ const Admin = () => {
   const [code, setCode] = useState('');
   const [category, setCategory] = useState('');
   const [showProductForm, setShowProductForm] = useState(false);
-
+ 
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState(' ');
   const [selectedOption, setSelectedOption] = useState('All products');
@@ -39,6 +40,7 @@ const Admin = () => {
   async function removeproducts(code){
     
      const removepro = await axios.post('http://localhost:5000/removeproducts',{code})
+     
   }
 
   const handleSubmit = async (e) => {
@@ -62,38 +64,64 @@ const Admin = () => {
     // Toggle the showProductForm state
     setShowProductForm(prevState => !prevState);
   }
-  
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+ 
   
 
   return (
     <div className='admin-main bg-light vh-100'>
      <div>
      <Navbar/>
+     <div className='selection-category d-flex'>
+            <label className=' ' htmlFor="selection">Select an option:</label>
+            <select id="selection"   value={selectedOption} onChange={handleOptionChange}>
+              <option value="All products">All products</option>
+              <option value="Cricket">Cricket</option>
+              <option value="Running">Running</option>
+              <option value="Football">Football</option>
+              <option value="Basketball">Basketball</option>
+              <option value="Tennis">Tennis</option>
+              </select>
+
+              <input
+              type="text"
+              className="form-control"
+              placeholder="Search"
+              value={searchTerm}
+            
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+
+            <button><BsSearch /></button>
+         </div>
       <h1 className='wawe-text bg-light'>Dear Admin your are wormly Welcome</h1>
       <div className='form-container' style={{ display: showProductForm ? 'block' : 'none' }} id='product-div'>
           <h2>Add Product</h2>
             <form onSubmit={handleSubmit}>
-              <div>
+              <div className='d-flex'>
                 <label>Name:</label>
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                <input type="text"  value={name} onChange={(e) => setName(e.target.value)} />
               </div>
-              <div>
+              <div className='d-flex'>
                 <label>Code:</label>
                 <input type="text" value={code} onChange={(e) => setCode(e.target.value)} />
               </div>
-              <div>
+              <div className='d-flex'>
                 <label>Price:</label>
                 <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
               </div>
-              <div>
+              <div className='d-flex'>
                 <label>Description:</label>
                 <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
               </div>
-              <div>
+              <div className='d-flex'>
                 <label>Image URL:</label>
                 <input type="text" value={image} onChange={(e) => setImage(e.target.value)} />
               </div>
-              <div className='selected-admin-iterm'>
+              <div className='selected-admin-iterm d-flex'>
                 <label>Category:</label>
                 <select value={category} onChange={(e) => setCategory(e.target.value)}>
                 <option value="All products">All products</option>

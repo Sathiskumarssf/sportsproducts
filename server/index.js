@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors  = require('cors')
 const bodyParser = require('body-parser');
 const usermodel =require('./models/user')
+const oderedproductmodel =require('./models/oderedproduct')
 const productmodel =require('./models/products')
 const bcrypt = require('bcrypt');
 
@@ -81,6 +82,37 @@ app.post('/removeproducts' ,async (req,res) =>{
     
   })
 
+
+  app.post('/addtocart',async (req,res)=>{
+    const {userEmail,imagepath,name,code,price} =req.body;
+    console.log(userEmail,imagepath,name,code,price)
+
+    if( userEmail.trim() != '' && imagepath.trim() != '' && name.trim() != '' && code.trim() != ''   ){
+
+      const alredystore = await oderedproductmodel.findOne({ useremail: userEmail, code: code });
+
+      if (alredystore) {
+        // If the product already exists, update its quantity
+        alredystore.quantity += 1; // Assuming you're incrementing the quantity by 1
+        await alredystore.save(); // Save the updated product
+        return res.json("Product already stored. Quantity updated.");
+      } else {
+        // If the product doesn't exist, create a new entry
+        const newProduct = {
+          useremail: userEmail,
+          imagepath: imagepath,
+          name: name,
+          code: code,
+          price: price,
+          quantity: 1 // Set the default quantity to 1 for new products
+        };
+        const orderedStoreProduct = await oderedproductmodel.create(newProduct);
+        return res.json(orderedStoreProduct);
+      }
+      
+    }
+})
+
 app.post('/fetchdata', async (req, res) => {
   try {
     const users = await usermodel.find(); // Assuming usermodel represents your Mongoose model
@@ -92,13 +124,15 @@ app.post('/fetchdata', async (req, res) => {
   }
 });
 
+ 
+
 
 app.post('/fetchproduct', async (req, res) => {
   try {
     const { value, reqireiterm } = req.body;
      
 
-    if (typeof reqireiterm === 'undefined') {
+    if (reqireiterm.trim() === '') {
       if (value === "All products") {
         const products = await productmodel.find();
         return res.json(products);
@@ -120,6 +154,28 @@ app.post('/fetchproduct', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+app.post('/orderedproduct', async (req, res) => {
+  
+   const {userEmail}  =req.body;
+   
+   if(userEmail.trim() != ''){
+    const products = await oderedproductmodel.find({ useremail: userEmail });
+    res.json(products)
+   }
+}
+)
+
+app.post('/removeorderedproduct', async (req, res) => {
+  
+   const {code , userEmail}  =req.body;
+   console.log(code,userEmail);
+   if(code.trim() != '' && userEmail.trim() != ''){
+    const user = await oderedproductmodel.findOneAndDelete({ code: code,useremail : userEmail });
+    
+   }
+}
+)
 
 
 app.post('/login', async (req, res) => {
