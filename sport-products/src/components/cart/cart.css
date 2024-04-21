@@ -1,0 +1,28 @@
+.cart-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontal centering */
+    
+    /* Optionally, you can set width and height to control the size of the centered div */
+    width: 100%; 
+    height: 100vh;
+    
+  }
+
+  .heading-cart{
+    margin-top: 15rem;
+    font-size: 4rem;
+  }
+  
+  .cart-items {
+ 
+    width: 90%;
+    height: auto;
+    text-align: center;
+  }
+.cart-items thead tr th{
+    font-size: 3rem;
+}
+.cart-items tbody tr td{
+    font-size: 3rem;
+}

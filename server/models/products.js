@@ -13,6 +13,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  price: {
+    type: Number, // Changed data type to Number
+    required: true
+  },
   name: {
     type: String,
     required: true

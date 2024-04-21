@@ -29,39 +29,40 @@ const Register = () => {
         <div className='register-container d-flex'>
           <div className='main-container1 d-flex '>
 
-          <div className='box'>
+          
            <div className='heading-containr1  '>
                <h1 className='register-heading-text text-light '  >Gear Up for Adventure: Your Premier Destination for Sports Equipment and Accessories!</h1>
            </div>
-            </div>
+             
 
-              <div className='box'>
+              
                     
                     <div className='register-container-component   p-5 m-5'>
                     <h2>Rgister</h2>
                     <form onSubmit={handleSubmit}>
                       <div className='d-flex'>
-                        <label className='label-input'>Username:</label>
-                        <input type="text" className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} />
+                        <label className='label-input' >Username:</label>
+                        <input type="text" placeholder='Enter your Name' className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} />
                       </div>
                       <div className='d-flex mt-1'>
                         <label className='label-input'>UserEmial:</label>
-                        <input type="text" className="form-control" value={useremail} onChange={(e) => setuseremail(e.target.value)} />
+                        <input type="text" className="form-control" placeholder='Enter your Email' value={useremail} onChange={(e) => setuseremail(e.target.value)} />
                       </div>
                       <div className='d-flex mt-2'>
                         <label className='label-input ml-2'>Password:</label>
-                        <input type="password" className="form-control  " value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input type="password" className="form-control  " placeholder=' Enter your Password'  value={password} onChange={(e) => setPassword(e.target.value)} />
                       </div>
                       <button type="submit" className='btn-primary btn'>Register</button>
+                      <Link to='/login'>
+                        <button className='login-btn btn-primary btn mt-2'>Login</button>
+                      </Link>
                     </form>
                   
                   
-                    <Link to='/login'>
-                        <button className='btn-primary btn mt-2'>Login</button>
-                    </Link>
+                    
                     </div>
                   
-              </div>
+               
             </div>
           </div>
       </div>

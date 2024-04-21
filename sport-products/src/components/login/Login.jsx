@@ -9,7 +9,7 @@ import Navbar from '../../parts/navbar/Nabbar'
 import { Link,useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [useremail, setUseremail] = useState('');
   const [password, setPassword] = useState('');
  
   const navigate = useNavigate();
@@ -17,11 +17,14 @@ const Login = () => {
     e.preventDefault();
 
   
-     await axios.post('http://localhost:5000/login', { username, password })
+     await axios.post('http://localhost:5000/login', { useremail, password })
      .then((result => {
-        if(result.data ==="User already exists"){
-            navigate(`/home`);
+        if(result.data ==="admin Login successful"){
+            navigate(`/admin?email=${useremail}`);
+        }else{
+          navigate(`/home?email=${useremail}`);
         }
+     console.log(result.data)
      }))
      .catch(err=>console.log(err))
          
@@ -34,36 +37,37 @@ const Login = () => {
       
     <div className='login-constainer bg-light'>
         <div className='main-container d-flex '>
-         <div className='box '>
+          
              <div className='heading-containr'>
              <h1 className='login-heading-text text-light   '  >Gear Up for Adventure: Your Premier Destination for Sports Equipment and Accessories!</h1>
              </div>
-         </div>
-          
-         <div className='box'>
-
          <div className='login-container-component   p-5 m-5'>
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>
             <div className='d-flex'>
-              <label className='input-label'>Username:</label>
-              <input className="form-control" type="text" value={username}  onChange={(e) => setUsername(e.target.value)} />
+              <label className='input-label'>UserEamil:</label>
+              <input className="form-control" type="text" value={useremail} placeholder='Enter your Email' onChange={(e) => setUseremail(e.target.value)} />
             </div>
             <div className='d-flex mt-2'>
               <label className='input-label'>Password:</label>
-              <input className="form-control" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <input className="form-control" type="password" value={password} placeholder='Enter your password' onChange={(e) => setPassword(e.target.value)} />
             </div>
+            <div className='d-flex'>
             <button type="submit" className='btn-primary btn '>Login</button>
+            <Link to='/'>
+              <button className='register-btn btn-primary btn mt-2'>Register</button>
+            </Link>
+            </div>
           </form>
         
         
-          <Link to='/'>
-              <button className='btn-primary btn mt-2'>Register</button>
-          </Link>
-       </div>
+          
+       
          </div>
         </div>
     </div>
+
+    
     </div>
   );
 };
