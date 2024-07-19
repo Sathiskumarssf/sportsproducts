@@ -41,6 +41,7 @@
     top: 30%;
     left: 30%;
     align-items: center;
+     
     width: 40%;
     height: 50%;
      border-radius: 30px;
@@ -49,11 +50,11 @@
 }
 
 .login-constainer input{
-    font-size: 3rem;
+    font-size: 1rem;
 }
 
 .login-constainer  button{
-    font-size: 3rem;
+    font-size: 1rem;
 }
 
 .register-btn{
@@ -66,10 +67,10 @@
 .login-heading-text{
     position: absolute;
     top: 10rem;
-    left: 20rem;
+    left: 10rem;
     font-family: "Luckiest Guy", cursive;
     text-align: center;
-    font-size: 5rem;
+    font-size: 2rem;
     color: rgba(100, 87, 188, 0.75);
     background-color:transparent;
     text-shadow: rgb(0, 0, 0) 4px 3px 15px;
@@ -82,7 +83,7 @@
 
 .input-label{
     margin-left: 0rem;
-      font-size: 3rem;
+      font-size: 1rem;
 }
 
 

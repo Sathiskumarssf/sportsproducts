@@ -21,8 +21,11 @@ const Login = () => {
      .then((result => {
         if(result.data ==="admin Login successful"){
             navigate(`/admin?email=${useremail}`);
-        }else{
+        }else if(result.data =="user Login successful"){
           navigate(`/home?email=${useremail}`);
+        }
+        else{
+             alert("email,password incorrect")
         }
      console.log(result.data)
      }))
