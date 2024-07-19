@@ -12,7 +12,7 @@ import './navbar.css'
 const Nabbar = () => {
   return (
     <div  className='main-navbar '>
-      <nav class="navbar  navbar-expand-lg bg-secondary p-4">
+      <nav class="navbar  navbar-expand-lg bg-secondary  ">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Menu </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">

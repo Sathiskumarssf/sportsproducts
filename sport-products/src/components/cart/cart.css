@@ -11,7 +11,13 @@
 
   .heading-cart{
     margin-top: 15rem;
-    font-size: 4rem;
+    font-size: 3rem;
+  }
+
+  .selected-preduct-image{
+    width: 100px;
+    height: 100px;
+    border-radius: 1rem;
   }
   
   .cart-items {
@@ -21,8 +27,30 @@
     text-align: center;
   }
 .cart-items thead tr th{
-    font-size: 3rem;
+    font-size: 1rem;
 }
 .cart-items tbody tr td{
-    font-size: 3rem;
+    font-size: 1rem;
+}
+
+@media only screen and (max-width: 767px){
+  .cart-items{
+    width: 100%;
+  }
+
+  .cart-items thead tr th{
+    font-size: 0.5rem;
+  }
+
+  .heading-cart{
+    font-size: 2rem;
+    margin-top: 5rem;
+  }
+
+  .cart-items button{
+    font-size: 0.5rem;
+  }
+   .selected-preduct-image{
+    width: 80px;
+   }
 }

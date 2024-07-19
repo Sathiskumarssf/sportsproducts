@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './cart.css';
 import axios from 'axios';
 import Navbar from '../../parts/navbar/Nabbar';
-import { useLocation } from 'react-router-dom';
+import { useLocation,Link } from 'react-router-dom';
 
 const Cart = () => {
   const location = useLocation();
@@ -80,7 +80,7 @@ const Cart = () => {
         <tbody>
           {products.map(product => (
             <tr key={product.id} className="cart-item">
-              <td><img src={product.imagepath} style={{ height: "100px", width: "100px" }} alt={product.name} /></td>
+              <td><img src={product.imagepath}  className='selected-preduct-image' alt={product.name} /></td>
               <td>{product.name}</td>
               <td>${product.price}</td>
               <td>
@@ -96,7 +96,10 @@ const Cart = () => {
       </table>
       <div className="total-amount">
         <h3>Total Amount: ${totalAmount}</h3>
-        <button className='btn btn-warning'>Check Out</button>
+
+        <Link  to={`/checkout?totalAmount=${totalAmount}&&useremail=${userEmail}`}>
+        <button className='btn btn-warning ' style={{fontSize:'1rem'}}>Check Out</button>
+        </Link>
       </div>
     </div>
   );
