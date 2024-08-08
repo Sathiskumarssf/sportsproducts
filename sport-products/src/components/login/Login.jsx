@@ -13,26 +13,29 @@ const Login = () => {
   const [password, setPassword] = useState('');
  
   const navigate = useNavigate();
+ 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-  
-     await axios.post('http://localhost:5000/login', { useremail, password })
-     .then((result => {
-        if(result.data ==="admin Login successful"){
-            navigate(`/admin?email=${useremail}`);
-        }else if(result.data =="user Login successful"){
-          navigate(`/home?email=${useremail}`);
-        }
-        else{
-             alert("email,password incorrect")
-        }
-     console.log(result.data)
-     }))
-     .catch(err=>console.log(err))
-         
-     
-  }
+    try {
+      const response = await axios.post('http://localhost:5000/login', { useremail, password });
+      const { message, token } = response.data;
+
+      // Store the token in localStorage
+      localStorage.setItem('jwtToken', token);
+
+      // Navigate based on the user role
+      if (message === 'admin Login successful') {
+        navigate(`/admin?email=${useremail}`);
+      } else if (message === 'user Login successful') {
+        navigate(`/home?email=${useremail}`);
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      alert('Email or password incorrect');
+    }
+  };
 
   return ( 
     <div>
