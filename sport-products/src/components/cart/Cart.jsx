@@ -10,6 +10,20 @@ const Cart = () => {
 
   const [products, setProducts] = useState([]);
 
+  
+  const removeProduct = async (code) => {
+    try {
+      const result = await axios.post('http://localhost:5000/removeorderedproduct', {
+        code,
+        userEmail
+      });
+      console.log(result.data);
+      setProducts(products.filter(product => product.code !== code));
+    } catch (error) {
+      console.error('Error removing product:', error);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,20 +40,8 @@ const Cart = () => {
     };
 
     fetchData();
-  }, [userEmail]);
-
-  const removeProduct = async (code) => {
-    try {
-      const result = await axios.post('http://localhost:5000/removeorderedproduct', {
-        code,
-        userEmail
-      });
-      console.log(result.data);
-      setProducts(products.filter(product => product.code !== code));
-    } catch (error) {
-      console.error('Error removing product:', error);
-    }
-  };
+  }, [userEmail,removeProduct]);
+ 
 
   const increaseQuantity = (code) => {
     setProducts(products.map(product => {
